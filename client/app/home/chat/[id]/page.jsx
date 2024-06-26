@@ -26,7 +26,9 @@ const page = ({ params }) => {
   const socket = useRef()
 
   useEffect(() => {
-    socket.current = io(process.env.SOCKET_URL)
+    console.log(process.env.API_URL)
+    console.log(process.env.SOCKET_URL)
+    socket.current = io(`${process.env.SOCKET_URL}`)
 
     socket.current.on("getMessage", data => {
       setMessages(prevMessages => [...prevMessages, data])
